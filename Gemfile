@@ -56,3 +56,5 @@ gem "faker", group: :development
 
 gem "letter_opener", group: :development
 
+gem 'devise'
+
