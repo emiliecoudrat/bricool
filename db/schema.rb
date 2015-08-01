@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731165934) do
+ActiveRecord::Schema.define(version: 20150801150457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bricoolers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "picture"
+    t.text     "bio"
+    t.boolean  "identity_verified"
+    t.boolean  "licence_verified"
+    t.boolean  "phone_verified"
+    t.boolean  "email_verified"
+    t.string   "iban"
+    t.string   "bic"
+    t.boolean  "tsandcs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
