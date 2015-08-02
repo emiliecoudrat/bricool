@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802121706) do
+
+ActiveRecord::Schema.define(version: 20150802122539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.time     "start_hour"
+    t.time     "end_hour"
+    t.integer  "bricooler_id"
+    t.integer  "booking_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "availabilities", ["booking_id"], name: "index_availabilities_on_booking_id", using: :btree
+  add_index "availabilities", ["bricooler_id"], name: "index_availabilities_on_bricooler_id", using: :btree
 
   create_table "bookings", force: true do |t|
     t.date     "day"
