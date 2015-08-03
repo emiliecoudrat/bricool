@@ -1,69 +1,20 @@
 Rails.application.routes.draw do
 
-  get 'bookings/index'
+  resources :customers, only: [:show, :edit, :update, :destroy] do
+    resources :estimates, only: [:new, :create]
+    resources :bookings, only: [:index, :edit, :update, :destroy]
+    resources :ratings, only: [:new, :create]
+  end
 
-  get 'bookings/new'
+  resources :bricoolers, only: [:index, :show, :edit, :update, :destroy] do
+    resources :ratings, only: [:index, :show, :destroy]
+    resources :availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
 
-  get 'bookings/create'
-
-  get 'bookings/edit'
-
-  get 'bookings/update'
-
-  get 'bookings/destroy'
-
-  get 'availabilities/index'
-
-  get 'availabilities/new'
-
-  get 'availabilities/create'
-
-  get 'availabilities/update'
-
-  get 'availabilities/edit'
-
-  get 'availabilities/destroy'
-
-
-  get 'ratings/index'
-
-  get 'ratings/show'
-
-  get 'ratings/new'
-
-  get 'ratings/create'
-
-  get 'ratings/destroy'
-
-  get 'services/index'
-
-  get 'services/new'
-
-  get 'services/create'
-
-  get 'services/edit'
-
-  get 'services/uptade'
-
-  get 'services/destroy'
-
-  get 'bricoolers/index'
-
-  get 'bricoolers/show'
-
-  get 'bricoolers/edit'
-
-  get 'bricoolers/update'
-
-  get 'bricoolers/destroy'
-
-  get 'customers/show'
-
-  get 'customers/edit'
-
-  get 'customers/update'
-
-  get 'customers/destroy'
+  resources :services do
+    resources :bookings, only: [:new, :create]
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
