@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
 root to: "home#index"
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
