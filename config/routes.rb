@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+root to: "home#index"
+
   resources :customers, only: [:show, :edit, :update, :destroy] do
     resources :estimates, only: [:new, :create]
     resources :bookings, only: [:index, :edit, :update, :destroy]
