@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'bricoolers/index'
+
+  get 'bricoolers/show'
+
+  get 'bricoolers/edit'
+
+  get 'bricoolers/update'
+
+  get 'bricoolers/destroy'
+
   get 'customers/show'
 
   get 'customers/edit'
