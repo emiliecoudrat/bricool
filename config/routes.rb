@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'availabilities/index'
+
+  get 'availabilities/new'
+
+  get 'availabilities/create'
+
+  get 'availabilities/update'
+
+  get 'availabilities/edit'
+
+  get 'availabilities/destroy'
+
   get 'ratings/index'
 
   get 'ratings/show'
