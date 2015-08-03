@@ -1,0 +1,2 @@
+module BricoolersHelper
+end
