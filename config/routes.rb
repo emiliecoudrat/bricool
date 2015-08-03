@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'services/index'
+
+  get 'services/new'
+
+  get 'services/create'
+
+  get 'services/edit'
+
+  get 'services/uptade'
+
+  get 'services/destroy'
+
   get 'bricoolers/index'
 
   get 'bricoolers/show'
