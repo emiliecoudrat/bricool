@@ -4,4 +4,5 @@ class Bricooler < ActiveRecord::Base
   has_many :availabilities, dependant: :destroy
   has_many :ratings
   has_many :services
+  has_many :bookings, through: :services
 end
