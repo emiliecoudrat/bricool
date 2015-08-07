@@ -12,6 +12,11 @@
       <% end %>
 
       <%= render "devise/shared/links" %>
+
+      <li>
+        <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
+      </li>
+
     </div>
   </div>
 </div>

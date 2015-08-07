@@ -57,10 +57,13 @@ gem "faker", group: :development
 gem "letter_opener", group: :development
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'simple_form'
 
 gem 'activeadmin', github: 'activeadmin'
+
+
 
