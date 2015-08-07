@@ -1,3 +1,41 @@
+<nav class="navbar-bricool navbar-bricool-fixed">
+  <div class="container navbar-bricool-container">
+
+    <a class="navbar-bricool-logo" href="/">
+      <%= image_tag 'logo.png', width:'300px'%>
+    </a>
+
+    <form action="" class="navbar-bricool-phone">
+        <i class="fa fa-phone"></i>
+        <li>06 18 20 08 77</li>
+    </form>
+
+    <hr>
+    <a href="" class="navbar-bricool-item navbar-bricool-link">Contact</a>
+    <hr>
+    <a href="" class="navbar-bricool-item navbar-bricool-link hidden-xs">
+      <div class="icon-badge-container">
+        <i class="fa fa-envelope-o"></i>
+        <div class="icon-badge icon-badge-blue">3</div>
+      </div>
+    </a>
+    <hr>
+    <div class="navbar-bricool-item">
+      <div class="dropdown">
+        <img src="user.jpg" class="avatar dropdown-toggle" id="navbar-bricool-menu" data-toggle="dropdown">
+
+        <ul class="dropdown-menu dropdown-menu-right navbar-bricool-dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <a href="" class="navbar-bricool-item navbar-bricool-button btn">Post stuff</a>
+  </div>
+</nav>
+
 
 <li>
   <%= link_to "Connexion", new_user_session_path %>
