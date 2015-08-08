@@ -29,3 +29,13 @@
 <% if user_signed_in? %>
   <%= image_tag current_user.picture, class: "img-avatar" %>
 <% end %>
+
+
+<br>
+<% if user_signed_in? %>
+  Hello <%= current_user.email %>!
+  <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-danger" %>
+<% else %>
+  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+  <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success" %>
+<% end %>
