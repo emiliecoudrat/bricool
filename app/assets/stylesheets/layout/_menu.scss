@@ -1,0 +1,24 @@
+
+.menu-bricool-container {
+  align-items: center;
+  display: flex;
+  height: 40px;
+}
+
+.menu-bricool {
+  position: relative;
+  background-color: $brand-color;
+  width: 100%;
+  li {
+    color: white;
+  }
+  li a {
+    color: white;
+    text-decoration: none;
+  }
+  li a:hover {
+    color: $violet;
+    transition: all 0.4s ease;
+  }
+}
+

@@ -1,0 +1,19 @@
+<nav class="menu-bricool">
+  <div class="container menu-bricool-container">
+    <div class="list-inline">
+      <li><%= link_to "Bricoolers", bricoolers_path %></li>
+      <li>|</li>
+      <li><%= link_to "Travaux", services_path %></li>
+      <li>|</li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Demande de devis" %></li>
+        <li>|</li>
+        <% else %>
+          <li><%= link_to "Demande de devis", new_user_session_path %></li>
+          <li>|</li>
+      <% end %>
+      <li><%= link_to "Devenir Bricooler", new_user_session_path %></li>
+    </div>
+  </div>
+</nav>
+
