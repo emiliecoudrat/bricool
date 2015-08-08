@@ -6,46 +6,38 @@
     </a>
 
     <form action="" class="navbar-bricool-phone">
-        <i class="fa fa-phone"></i>
-        <li>06 18 20 08 77</li>
+        <p><i class="fa fa-phone"></i> 06 18 20 08 77</p>
     </form>
 
     <hr>
-    <a href="" class="navbar-bricool-item navbar-bricool-link">Contact</a>
+    <a href="" class="navbar-bricool-item navbar-bricool-link">à propos</a>
     <hr>
     <a href="" class="navbar-bricool-item navbar-bricool-link hidden-xs">
       <div class="icon-badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="icon-badge icon-badge-blue">3</div>
+        <i class="fa fa-shopping-cart"></i>
+        <div class="icon-badge icon-badge-blue">1</div>
       </div>
     </a>
     <hr>
+
+
+<% if user_signed_in? %>
     <div class="navbar-bricool-item">
       <div class="dropdown">
         <img src="user.jpg" class="avatar dropdown-toggle" id="navbar-bricool-menu" data-toggle="dropdown">
 
         <ul class="dropdown-menu dropdown-menu-right navbar-bricool-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li> <%= link_to 'Déconnexion', destroy_user_session_path, method: 'delete' %></li>
         </ul>
       </div>
     </div>
-    <hr>
-    <a href="" class="navbar-bricool-item navbar-bricool-button btn">Post stuff</a>
+    <% else %>
+     <li class="navbar-bricool-item navbar-bricool-button btn"><%= link_to "Connexion", new_user_session_path %></li>
+<% end %>
+    <!-- <a href="" class="navbar-bricool-item navbar-bricool-button btn">Connexion</a> -->
+
+
   </div>
 </nav>
 
 
-<li>
-  <%= link_to "Connexion", new_user_session_path %>
-</li>
-
-
-<li>
-  <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
-</li>
-
-<% if user_signed_in? %>
-  <%= image_tag current_user.picture, class: "img-avatar" %>
-<% end %>

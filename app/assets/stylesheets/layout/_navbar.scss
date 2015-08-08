@@ -26,30 +26,9 @@
     justify-content: flex-end;
     padding: 0 10px;
     position: relative;
-    .navbar-bricool-search-btn {
-      line-height: 40px;
-      color: #E6E6E6;
-      border: none;
-      background: transparent;
-      position: absolute;
-      right: 14px;
-      top: -2px;
-      z-index: 1;
-    }
-    .navbar-bricool-input {
-      flex: 0 1 300px;
-      transition: all 0.15s ease;
-      line-height: 40px;
-      font-weight: lighter;
-      color: #666666;
-      border: 1px solid #E6E6E6;
-      border-radius: 5px;
-      padding: 0 10px;
+    p {
+      margin: 0px;
       font-size: 14px;
-      outline: none;
-    }
-    .navbar-bricool-input:focus  {
-      border: 1px solid #CCCCCC;
     }
   }
   .navbar-bricool-link {
@@ -63,17 +42,20 @@
   .navbar-bricool-button {
     margin-left: 10px;
     padding: 0 20px;
-    border-radius: 20em;
+    border-radius: 1em;
     line-height: 40px;
-    background-color: #D23333;
-    color: white;
-    font-size: 14px;
+    background-color: $brand-color;
     border: 2px solid $brand-color;
-
-    .navbar-bricool-button:hover {
+    a {
       color: white;
+      font-size: 14px;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    .navbar-bricool-button:hover {
       background: $brand-color;
-      border-color: darken($brand-color, 10%);
+      border-color: darken($brand-color, 20%);
     }
   }
   .navbar-bricool-dropdown-menu {
