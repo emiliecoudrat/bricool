@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-      if resource.profileable_type == 'Bricooler'
+    if resource.profileable_type == 'Bricooler'
       resource.profileable = Bricooler.new
     elsif resource.profileable_type == 'Customer'
       resource.profileable = Customer.new
