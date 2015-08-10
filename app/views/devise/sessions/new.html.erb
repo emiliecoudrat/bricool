@@ -1,41 +1,48 @@
 <div class="container">
+
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <h2>Sign in</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
+    <div class="col-sm-4 col-sm-offset-4">
+      <br />
+      <h2>Je me connecte</h2>
+      <br />
+      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.email_field :email, label: "Mon email", required: false, autofocus: true %>
+          <%= f.password_field :password, label: "Mon mot de passe", autocomplete: "off", hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+          <%= f.check_box :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+        <br />
+        </div>
 
-        <%= f.input :email, required: true, autofocus: true %>
-        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-        <%= f.input :password_confirmation, required: true %>
-        <%= f.button :submit, "Sing in", class: "btn btn-primary" %>
+        <div class="form-actions">
+          <%= f.submit "OK", class: "brand-btn" %>
+        </div>
       <% end %>
+    </div>
 
-      <%= render "devise/shared/links" %>
-
-      <li>
-        <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
-      </li>
-
+  <div class="col-sm-4 col-sm-offset-4">
+  <br />
+    <div class="fb-connect">
+      <%= link_to(user_omniauth_authorize_path(:facebook), class: "fb-btn") do %>
+        Connexion <i class="fa fa-facebook"></i>
+      <% end %>
     </div>
   </div>
-</div>
+
+  <div class="col-sm-4 col-sm-offset-4">
+  <br />
+    <div class="forgot-pwd">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "Oups, j'ai oublié mon mot de passe.", new_password_path(resource_name) %><br />
+      <% end -%>
+    </div>
+  </div>
+
+ </div> <!-- ferme la row -->
+
+</div> <!-- ferme le container -->
 
 
-<li>
-  <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
-</li>
-
-<% if user_signed_in? %>
-  <%= image_tag current_user.picture, class: "img-avatar" %>
-<% end %>
 
 
-<br>
-<% if user_signed_in? %>
-  Hello <%= current_user.email %>!
-  <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-danger" %>
-<% else %>
-  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success" %>
-<% end %>
+
+

@@ -4,7 +4,12 @@
 // Google fonts
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic");
 $base-font: "Roboto", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+$header-font: "Edo SZ", "Helvetica", "sans-serif";
+
+@font-face {
+  font-family: 'Edo SZ';
+  src: url('http://www.fontsaddict.com/fontface/edo-sz.ttf');
+}
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -32,6 +37,7 @@ $blue: #469AE0;
 $yellow: #FDB631;
 $orange: #E67E22;
 $green: #32B796;
+$bg-grey: #F7F7F7;
 
 // Gray scale
 $gray-darker:  lighten(#000, 13.5%); // #222
