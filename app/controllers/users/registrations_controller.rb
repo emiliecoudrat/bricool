@@ -9,12 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
       if resource.profileable_type == 'Bricooler'
       resource.profileable = Bricooler.new
-    else
+    elsif resource.profileable_type == 'Customer'
       resource.profileable = Customer.new
     end
     resource_saved = resource.save
 
-    resource_saved = resource.save
     yield resource if block_given?
     if resource_saved
       if resource.active_for_authentication?
@@ -44,10 +43,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    if sign_up_params[:profileable_type] == "bricooler"
-      edit_bricooler_path(resource.id)
-    else sign_up_params[:profileable_type] == "customer"
-      edit_customer_path(resource.id)
+    case current_user.profileable_type
+    when "Bricooler"
+      return edit_bricooler_path(resource.id)
+    when "Customer"
+      return edit_customer_path(resource.id)
     end
   end
 
