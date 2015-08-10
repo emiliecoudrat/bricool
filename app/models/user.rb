@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:facebook]
 
   belongs_to :profileable, polymorphic: true
-
+  accepts_nested_attributes_for :profileable
   validates :email, presence: true
 
 
@@ -22,5 +22,25 @@ class User < ActiveRecord::Base
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
+
+  # def bricoler?
+  #   if profileable_type == 'Bricoler'
+  #     true
+  #   end
+  # end
+
+  # def bricooler
+  #   Bricoler.find(self.profileable_id) if self.br ?
+  # end
+
+  # def customer?
+  #   if profileable_type == 'Customer'
+  #     true
+  #   end
+  # end
+
+  # def customer
+  #   Customer.find(self.profileable_id) if self.customer ?
+  # end
 
 end
