@@ -15,9 +15,13 @@ class BricoolersController < ApplicationController
   end
 
   def update
+    @bricooler.update(bricooler_params)
+    redirect_to home_index
   end
 
   def destroy
+    @bricooler.destroy
+    redirect_to home_index
   end
 
   private
