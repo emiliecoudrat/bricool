@@ -62,21 +62,22 @@ label {
   border: 2px solid #48649F;
   color: white;
   font-size: 16px;
-  a:hover {
-    text-decoration: none;
-  }
-  .brand-btn:hover {
+  :hover {
     background: #48649F;
     border-color: darken(#48649F, 30%);
   }
-}
+  }
 
-// .fb-connect {
-//   text-align: center;
-// }
+.fb-connect a:hover {
+    text-decoration: none;
+    color: white;
+  }
 
 // Forgot pwd
 
-.forgot-pwd a {
-  color: $gray;
+.link {
+  margin-bottom: 20px;
+  a {
+   color: $gray;
+ }
 }
