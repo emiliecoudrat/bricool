@@ -1,27 +1,46 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-4 col-sm-offset-4">
 
-      <h2>Sign up</h2>
+      <h2>Je m'inscris</h2>
 
 
-     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
+      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-          <%= f.input :password_confirmation, required: true %>
+        <div class="form-inputs">
+          <%= f.email_field :email, label: "Mon email", required: false, autofocus: true %>
+          <%= f.password_field :password, label: "Mon mot de passe", autocomplete: "off", hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+          <%= f.password_field :password_confirmation, label: "Je confirme mon mot de passe", autocomplete: "off" %>
 
-          <%= f.select :profileable_type, options_for_select(%w[Customer Bricooler]) %>
-          <%= f.hidden_field :profileable_id %>
+          <p> Je m'inscris en tant que : </p>
+          <%= f.radio_button :profileable_type, 'Customer', label: "Client" %>
+          <%= f.radio_button :profileable_type, 'Bricooler', label: "Bricooler" %>
+          <% f.hidden_field :profileable_id %>
+        </div>
 
-          <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+        <div class="form-actions">
+        <br />
+          <%= f.submit "OK", class: "brand-btn" %>
+        </div>
       <% end %>
-
-
-
-      <%= render "devise/shared/links" %>
     </div>
-  </div>
-</div>
+
+    <div class="col-sm-4 col-sm-offset-4">
+    <br />
+      <div class="fb-connect">
+        <%= link_to(user_omniauth_authorize_path(:facebook), class: "fb-btn") do %>
+          Connexion <i class="fa fa-facebook"></i>
+        <% end %>
+      </div>
+    <br />
+    </div>
+
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="link">
+        <i class="fa fa-hand-o-right"></i><%= link_to " Je suis déjà inscrit.", new_user_session_path %>
+      </div>
+    </div>
+
+  </div> <!-- ferme la row -->
+</div> <!-- ferme le container  -->
 
