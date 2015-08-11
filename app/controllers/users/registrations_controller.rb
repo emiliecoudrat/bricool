@@ -7,9 +7,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    if resource.profileable_type == 'Bricooler'
+    case resource.profileable_type
+    when'Bricooler'
       resource.profileable = Bricooler.new
-    elsif resource.profileable_type == 'Customer'
+    when 'Customer'
       resource.profileable = Customer.new
     end
     resource_saved = resource.save
