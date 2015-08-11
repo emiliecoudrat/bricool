@@ -1,2 +1,17 @@
-<h1>Bricoolers#index</h1>
-<p>Find me in app/views/bricoolers/index.html.erb</p>
+<h1>
+  <div class="text-center">
+    NOS BRICOOLERS
+  </div>
+</h1>
+
+<div class="container">
+  <% @bricoolers.each do |bricooler| %>
+    <div class="row well">
+      <div class="col-sm-3">
+        <%= bricooler.user.email%>
+        <%= link_to 'Edit', edit_bricooler_path(bricooler) %></td>
+        <%= link_to 'Destroy', bricooler, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
