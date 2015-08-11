@@ -66,5 +66,6 @@ gem 'bootstrap_form'
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'pundit'
 
 

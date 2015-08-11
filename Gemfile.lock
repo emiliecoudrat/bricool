@@ -161,6 +161,8 @@ GEM
     pry-byebug (3.2.0)
       byebug (~> 5.0)
       pry (~> 0.10)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.5.5)
@@ -254,6 +256,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   pry-byebug
+  pundit
   quiet_assets
   rails (= 4.1.8)
   rails_12factor
