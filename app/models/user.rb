@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
       user.picture = auth.info.image
       user.token = auth.credentials.token
       user.token_expiry = Time.at(auth.credentials.expires_at)
-    end
   end
 
   def bricoler?
@@ -30,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def bricooler
-    Bricoler.find(self.profileable_id) if self.br ?
+    Bricoler.find(self.profileable_id) if self.bricooler ?
   end
 
   def customer?
