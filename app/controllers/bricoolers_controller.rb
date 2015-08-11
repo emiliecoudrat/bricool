@@ -28,7 +28,7 @@ class BricoolersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bricooler
       @bricooler = current_user.profileable
-    end
+  end
 
     def set_user
       @user = current_user

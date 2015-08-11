@@ -5,7 +5,7 @@
       <br />
       <h2>Je me connecte</h2>
       <br />
-      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.email_field :email, label: "Mon email", required: false, autofocus: true %>
           <%= f.password_field :password, label: "Mon mot de passe", autocomplete: "off", hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
