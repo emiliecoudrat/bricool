@@ -1,11 +1,6 @@
 class CustomerPolicy < ApplicationPolicy
   attr_accessor :current_user, :customer
 
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
 
   def initialize(current_user, customer)
     @current_user = current_user

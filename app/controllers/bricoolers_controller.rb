@@ -2,8 +2,11 @@ class BricoolersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_bricooler, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
+  after_action :verify_authorized, except: :index, unless: :devise_controller?
+
 
   def index
+    @bricoolers = policy_scope(Bricooler)
     @bricoolers = Bricooler.all
   end
 
@@ -11,14 +14,20 @@ class BricoolersController < ApplicationController
   end
 
   def edit
+    authorize @bricooler
   end
 
   def update
-    @bricooler.update(bricooler_params)
-    redirect_to home_index
+    if @bricooler.update(bricooler_params)
+    redirect_to home_index_path
+    else
+      render :edit
+    end
+    authorize @bricooler
   end
 
   def destroy
+    authorize @bricooler
     @bricooler.destroy
     redirect_to home_index
   end
