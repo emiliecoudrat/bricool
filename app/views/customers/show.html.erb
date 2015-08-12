@@ -5,23 +5,27 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
 
-      <p><strong>Email:</strong> <%= @customer.user.email %></p>
-      <br>
-      <br>
-      <%= link_to(edit_customer_path, class: "btn btn-primary") do %>
-        <i class="fa fa-pencil"> Compléter ou mettre à jour mon profil</i>
-      <% end %>
-      <div class="horizontal_minispacer"></div>
-    </div>
+      <h2><% if policy(@customer).show? %>
+        <strong>Email:</strong> <%= @customer.email %>
+            <br>
+            <br>
+            <%= link_to(edit_customer_path, class: "btn btn-primary") do %>
+              <i class="fa fa-pencil"> Compléter ou mettre à jour mon profil</i>
+            <% end %>
+            <div class="horizontal_minispacer"></div>
 
-    <div class="col-xs-8 col-xs-offset-2">
-      <h2 class="text-center">J'ai besoin d'un petit bricolage </h2>
-        <br>
-       <%= link_to(class: "btn btn-primary") do %>
-        <i class="fa fa-pencil"> De quel travaux ai-je besoin ?</i>
-      <% end %>
-    </div>
+
+            <div class="col-xs-8 col-xs-offset-2">
+              <h3 class="text-center">J'ai besoin d'un petit bricolage </h3>
+                <br>
+               <%= link_to(class: "btn btn-primary") do %>
+                <i class="fa fa-pencil"> De quel travaux ai-je besoin ?</i>
+              <% end %>
+            </div>
+          <% end %>
+      </h2>
+     <div class="horizontal_spacer"></div>
+     <div class="horizontal_spacer"></div>
+   </div>
   </div>
-      <div class="horizontal_spacer"></div>
-      <div class="horizontal_spacer"></div>
 </div>

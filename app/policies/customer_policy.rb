@@ -1,27 +1,27 @@
 class CustomerPolicy < ApplicationPolicy
-  # attr_reader :user, :customer
+  attr_accessor :current_user, :customer
 
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end
 
-  # def initialize(user, customer)
-  #   @user = current_user
-  #   @customer = customer
-  # end
+  def initialize(current_user, customer)
+    @current_user= current_user
+    @customer = customer
+  end
 
-  # def show?
-  #   @user.profileable == @customer
-  # end
+  def show?
+    @customer == current_user.profileable
+  end
 
-  # def update?
-  #   @user.profileable == @customer
-  # end
+  def update?
+    @customer == current_user.profileable
+  end
 
-  # def destroy?
-  #   @user.profileable == @customer
-  # end
+  def destroy?
+    @customer == current_user.profileable
+  end
 
-  # class Scope < Scope
-  #   def resolve
-  #     scope.all
-  #   end
-  # end
 end
