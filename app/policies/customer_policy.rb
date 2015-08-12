@@ -15,30 +15,19 @@ class CustomerPolicy < ApplicationPolicy
   def show?
     if current_user.profileable_type == "Customer"
       true
-    elsif current_user.profileable_type == "Bricooler"
-      @record.bricooler == current_user.profileable
-    elsif
-      @record == user.profileable
     end
   end
 
   def update?
     if current_user.profileable_type == "Customer"
       true
-    elsif current_user.profileable_type == "Bricooler"
-      @record.bricooler == current_user.profileable
-    elsif
-      @record == user.profileable
     end
   end
 
   def destroy?
     if current_user.profileable_type == "Customer"
       true
-    elsif current_user.profileable_type == "Bricooler"
-      @record.bricooler == current_user.profileable
-    elsif
-      @record == user.profileable
     end
   end
+
 end
