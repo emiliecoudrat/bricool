@@ -3,18 +3,30 @@ class CustomersController < ApplicationController
   # before_filter :ensure_customer, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :verify_authorized, except: [:new, :create, :index]
 
+
+  def show
+    @customer.show(customer_params)
+    authorize @customer
+  end
 
   def edit
+    authorize @customer
   end
 
   def update
-    @customer.update(customer_params)
+    authorize @customer
+    if @customer.update(customer_params)
     redirect_to home_index
+    else
+      render :edit
+    end
   end
 
   def destroy
     @customer.destroy
+    authorize @customer
     redirect_to home_index
   end
 
