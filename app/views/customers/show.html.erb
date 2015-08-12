@@ -5,25 +5,26 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
 
-      <h2><% if policy(@customer).show? %>
+      <p><% if policy(@customer).show? %>
         <strong>Email:</strong> <%= @customer.user.email %>
             <br>
             <br>
-            <%= link_to(edit_customer_path, class: "btn btn-primary") do %>
-              <i class="fa fa-pencil"> Compléter ou mettre à jour mon profil</i>
-            <% end %>
+
+              <i class="fa fa-pencil"> <%= link_to'Compléter mon profil', edit_customer_path if policy(@customer).edit? %></i>
             <div class="horizontal_minispacer"></div>
+            <i class="fa fa-trash"> <%= link_to 'Supprimer mon profil', @customer, method: :delete, data: { confirm: "Sûre de vouloir supprimer votre profil ?"} if policy(@customer).destroy? %> </i>
 
 
             <div class="col-xs-8 col-xs-offset-2">
-              <h3 class="text-center">J'ai besoin d'un petit bricolage </h3>
-                <br>
+              <h3 class="text-center">
                <%= link_to(class: "btn btn-primary") do %>
-                <i class="fa fa-pencil"> De quel travaux ai-je besoin ?</i>
-              <% end %>
+                <i class="fa fa-wrench"> De quel travaux ai-je besoin ?</i>
+              <% end %> </h3>
+               <br>
+              <br>
             </div>
           <% end %>
-      </h2>
+      </p>
      <div class="horizontal_spacer"></div>
      <div class="horizontal_spacer"></div>
    </div>
