@@ -7,11 +7,11 @@
           <li><strong>BRICOOL</strong></li>
           <br />
           <br />
-          <li>A propos de Bricool</li>
+          <li><%= link_to "A propos de Bricool" %></li>
           <li><%= link_to "Inscription | Connexion", new_user_session_path %></li>
-          <li><%= link_to "Mot de passe oublié", new_password_path(resource_name) %></li>
-          <li>Conditions Générales</li>
-          <li>Presse</li>
+          <li><%= link_to "Mot de passe oublié" %></li>
+          <li><%= link_to "Conditions Générales" %></li>
+          <li><%= link_to "Presse" %></li>
         </div>
       </div>
 
@@ -30,8 +30,16 @@
           <li><strong>NOUS SUIVRE</strong></li>
           <br />
           <br />
-          <li><i class="fa fa-facebook fa-2x"></i></li>
-          <li><i class="fa fa-twitter fa-2x"></i></li>
+          <li>
+            <%= link_to() do %>
+             <i class="fa fa-facebook fa-2x"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to() do %>
+              <i class="fa fa-twitter fa-2x"></i>
+            <% end %>
+          </li>
         </div>
       </div>
 
