@@ -1,0 +1,55 @@
+<footer>
+  <div class="container bricool-footer">
+    <div class="row">
+
+      <div class="col-xs-2">
+        <div class="bricool-elements list-inline">
+          <li><strong>BRICOOL</strong></li>
+          <br />
+          <br />
+          <li>A propos de Bricool</li>
+          <li><%= link_to "Inscription | Connexion", new_user_session_path %></li>
+          <li><%= link_to "Mot de passe oublié", new_password_path(resource_name) %></li>
+          <li>Conditions Générales</li>
+          <li>Presse</li>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="bricooleur-elements list-inline">
+          <li><strong>BRICOOLEUR</strong></li>
+          <br />
+          <br />
+          <li><%= link_to "Devenir Bricooler", new_user_registration_path %></li>
+          <li><%= link_to "Accéder à mon espace", new_user_session_path %></li>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="rs-elements list-inline">
+          <li><strong>NOUS SUIVRE</strong></li>
+          <br />
+          <br />
+          <li><i class="fa fa-facebook fa-2x"></i></li>
+          <li><i class="fa fa-twitter fa-2x"></i></li>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="contact-elements list-inline">
+          <li><strong>NOUS CONTACTER</strong></li>
+          <br />
+          <br />
+          <li>06 18 20 08 77</li>
+          <li><%= mail_to "hello@bricool.fr" %></li>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+      <br />
+        <div class="mention">
+          © 2015 Bricool SAS / Tous droits réservés
+        </div>
+      </div>
+  </div>
+</footer>
