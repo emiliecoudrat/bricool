@@ -13,7 +13,13 @@ class BricoolerPolicy < ApplicationPolicy
   end
 
   def show?
-
+    if current_user.profileable_type == 'Bricooler'
+      true
+    elsif user.profile_type == 'Customer'
+      @record.customer == user.profileable
+    elsif
+      @record == user.profile
+    end
   end
 
   def update?
