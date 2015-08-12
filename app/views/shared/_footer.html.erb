@@ -9,7 +9,7 @@
           <br />
           <li>A propos de Bricool</li>
           <li><%= link_to "Inscription | Connexion", new_user_session_path %></li>
-          <li>Mot de passe oublié</li>
+          <li><%= link_to "Mot de passe oublié", new_password_path(resource_name) %></li>
           <li>Conditions Générales</li>
           <li>Presse</li>
         </div>
@@ -20,7 +20,7 @@
           <li><strong>BRICOOLEUR</strong></li>
           <br />
           <br />
-          <li><%= link_to "Devenez Bricooler", new_user_registration_path %></li>
+          <li><%= link_to "Devenir Bricooler", new_user_registration_path %></li>
           <li><%= link_to "Accéder à mon espace", new_user_session_path %></li>
         </div>
       </div>
@@ -30,8 +30,8 @@
           <li><strong>NOUS SUIVRE</strong></li>
           <br />
           <br />
-          <li>Facebook</li>
-          <li>Twitter</li>
+          <li><i class="fa fa-facebook fa-2x"></i></li>
+          <li><i class="fa fa-twitter fa-2x"></i></li>
         </div>
       </div>
 
@@ -41,14 +41,12 @@
           <br />
           <br />
           <li>06 18 20 08 77</li>
-          <li>hello@bricool.fr</li>
+          <li><%= mail_to "hello@bricool.fr" %></li>
         </div>
       </div>
 
-      <div class="col-xs-2">
-      </div>
-
       <div class="col-xs-12">
+      <br />
         <div class="mention">
           © 2015 Bricool SAS / Tous droits réservés
         </div>
