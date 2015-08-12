@@ -2,7 +2,6 @@ class BricoolersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   before_action :set_bricooler, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
-  # before_action :find_profileable
 
   def index
     @bricoolers = Bricooler.all
