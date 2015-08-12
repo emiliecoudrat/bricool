@@ -8,20 +8,37 @@ class CustomerPolicy < ApplicationPolicy
   end
 
   def initialize(current_user, customer)
-    @current_user= current_user
+    @current_user = current_user
     @customer = customer
   end
 
   def show?
-    @customer == current_user.profileable
+    if current_user.profileable_type == "Customer"
+      true
+    elsif current_user.profileable_type == "Bricooler"
+      @record.bricooler == current_user.profileable
+    elsif
+      @record == user.profileable
+    end
   end
 
   def update?
-    @customer == current_user.profileable
+    if current_user.profileable_type == "Customer"
+      true
+    elsif current_user.profileable_type == "Bricooler"
+      @record.bricooler == current_user.profileable
+    elsif
+      @record == user.profileable
+    end
   end
 
   def destroy?
-    @customer == current_user.profileable
+    if current_user.profileable_type == "Customer"
+      true
+    elsif current_user.profileable_type == "Bricooler"
+      @record.bricooler == current_user.profileable
+    elsif
+      @record == user.profileable
+    end
   end
-
 end

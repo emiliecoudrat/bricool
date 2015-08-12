@@ -6,7 +6,7 @@
     <div class="col-xs-8 col-xs-offset-2">
 
       <h2><% if policy(@customer).show? %>
-        <strong>Email:</strong> <%= @customer.email %>
+        <strong>Email:</strong> <%= @customer.user.email %>
             <br>
             <br>
             <%= link_to(edit_customer_path, class: "btn btn-primary") do %>
