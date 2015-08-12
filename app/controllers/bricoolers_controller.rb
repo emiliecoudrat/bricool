@@ -6,6 +6,7 @@ class BricoolersController < ApplicationController
 
 
   def index
+    @bricoolers = policy_scope(Bricooler)
     @bricoolers = Bricooler.all
   end
 
@@ -13,14 +14,20 @@ class BricoolersController < ApplicationController
   end
 
   def edit
+    authorize @bricooler
   end
 
   def update
-    @bricooler.update(bricooler_params)
-    redirect_to home_index
+    if @bricooler.update(bricooler_params)
+    redirect_to home_index_path
+    else
+      render :edit
+    end
+    authorize @bricooler
   end
 
   def destroy
+    authorize @bricooler
     @bricooler.destroy
     redirect_to home_index
   end

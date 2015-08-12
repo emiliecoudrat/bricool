@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     redirect_to home_index
-    authorize @customer
+    authorize @bricooler
   end
 
 private

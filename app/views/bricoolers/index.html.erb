@@ -5,13 +5,15 @@
 </h1>
 
 <div class="container">
-  <% @bricoolers.each do |bricooler| %>
-    <div class="row well">
-      <div class="col-sm-3">
-        <%= bricooler.user.email%>
-        <%= link_to 'Edit', edit_bricooler_path(bricooler) %></td>
-        <%= link_to 'Destroy', bricooler, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if policy(@bricooler).index? %>
+    <% @bricoolers.each do |bricooler| %>
+      <div class="row well">
+        <div class="col-sm-3">
+          <%= bricooler.first_name %>
+          <%= bricooler.last_name %>
+          <%= bricooler.bio %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

@@ -7,7 +7,7 @@ class BricoolerPolicy < ApplicationPolicy
     end
   end
 
-  def initialize(current_user, customer)
+  def initialize(current_user, bricooler)
     @current_user = current_user
     @bricooler = bricooler
   end
