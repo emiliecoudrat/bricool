@@ -6,3 +6,23 @@
 h2, h3, h4 {
   color: $violet;
 }
+
+h6 {
+  color: $font-grey;
+}
+
+.bricool-home div {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.petits-travaux h4 {
+    text-align: left;
+    color: $brand-color;
+}
+
+.bricooleurs h4 {
+  text-align: left;
+  color: $brand-color;
+}
