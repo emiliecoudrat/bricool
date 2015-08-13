@@ -18,8 +18,9 @@ class CustomersController < ApplicationController
   end
 
   def update
+    email
     if @customer.update(customer_params)
-    redirect_to home_index
+    redirect_to customer_path
     else
       render :edit
     end
@@ -30,6 +31,10 @@ class CustomersController < ApplicationController
     @customer.destroy
     redirect_to home_index
     authorize @bricooler
+  end
+
+  def email
+    current_user.profileable_id = @customer.id
   end
 
 private

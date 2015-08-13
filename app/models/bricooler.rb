@@ -13,4 +13,5 @@ class Bricooler < ActiveRecord::Base
   def name
     "#{first_name.nil? ? "" : first_name.capitalize + " "}#{last_name.nil? ? "" : last_name.capitalize}"
   end
+
 end
