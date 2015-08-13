@@ -68,5 +68,7 @@ gem 'activeadmin', github: 'activeadmin'
 
 gem 'pundit'
 
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
 
 

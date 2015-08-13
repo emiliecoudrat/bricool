@@ -1,0 +1,16 @@
+<div class="container">
+
+<%= bootstrap_form_for([@customer, @estimate]) do |f| %>
+  <p>
+    <%= f.text_field :title %>
+    <%= f.text_area :description %>
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+    <% f.hidden_field :customer_id %>
+    <% f.hidden_field :id %>
+  </p>
+  <p><%= f.submit "valider" %></p>
+
+<% end %>
+
+</div>
