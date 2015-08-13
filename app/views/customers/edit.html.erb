@@ -1,2 +1,68 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+
+<% if policy(@customer).edit? %>
+  <div class="container text-center">
+<br>
+    <div class="row">
+         <div class="col-sm-8 col-sm-offset-2 ">
+          <h1>Complétez votre profil</h1>
+            <br>
+                <%= bootstrap_form_for (@customer) do |f| %>
+                  <form class="form-horizontal">
+
+                      <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-10 ">
+                          <%= f.text_field :first_name, autofocus: true, label: "Mon Prénom" %>
+
+                          <%= f.text_field :last_name, autofocus: true, label: "Mon Nom de famille" %>
+
+                          <%= f.text_field :phone, label: "Mon téléphone" %>
+                          <br>
+                          <div class="col-sm-offset-2 col-sm-8 ">
+                            <%= f.fields_for(:current_user, :url => { :action => "update_password" }) do |user| %>
+                            <br>
+                            <%=  user.text_field :email, autofocus: true, label: "Modifier mon email"%>
+                            <%= user.password_field :password, :autocomplete => "off"  %>
+                            <div class="field">
+                              <%= f.password_field :password_confirmation %>
+                            </div>
+                          <% end %>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <br>
+                      <div class="col-sm-offset-4 col-sm-4 ">
+                        <div class="form-actions">
+                          <br>
+                          <%= f.submit "OK", class: "brand-btn" %>
+                        </div>
+                      </div>
+                      <div class="col-sm-offset-4 col-sm-4 ">
+                        <ul class="list-unstyled">
+                          <br>
+                          <br>
+                          <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
+                          <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
+                        </ul>
+                      </div>
+                <% end %>
+          <br>
+      </div> <!-- ferme la row -->
+    </div>
+  </div>
+  <br>
+  <br>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
