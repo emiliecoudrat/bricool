@@ -20,7 +20,7 @@ class BricoolersController < ApplicationController
 
   def update
     if @bricooler.update(bricooler_params)
-    redirect_to home_index_path
+    redirect_to bricooler_path
     else
       render :edit
     end
@@ -32,6 +32,7 @@ class BricoolersController < ApplicationController
     @bricooler.destroy
     redirect_to home_index
   end
+
 
 
   private
