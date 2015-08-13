@@ -1,2 +1,41 @@
-<h1>Bricoolers#show</h1>
-<p>Find me in app/views/bricoolers/show.html.erb</p>
+<h1 class="text-center">Mon profil</h1>
+<br>
+<br>
+<div class="container text-align">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+
+      <p><% if policy(@bricooler).show? %>
+        <strong>Email :</strong> <%= @bricooler.user.email %>
+         <br>
+        <strong>Prénom :</strong> <%= @bricooler.first_name %>
+            <br>
+        <strong>Prénom :</strong> <%= @bricooler.last_name %>
+        <br>
+        <strong>Téléphone :</strong> <%= @bricooler.phone %>
+        <br>
+        <strong>Votre description :</strong> <%= @bricooler.bio %>
+
+            <br>
+            <br>
+              <i class="fa fa-pencil"> <%= link_to'Compléter mon profil', edit_bricooler_path if policy(@bricooler).edit? %></i>
+            <div class="horizontal_minispacer"></div>
+            <i class="fa fa-trash"> <%= link_to 'Supprimer mon profil', @bricooler, method: :delete, data: { confirm: "Sûre de vouloir supprimer votre profil ?"} if policy(@bricooler).destroy? %> </i>
+            <br>
+
+            <div class="col-xs-8 col-xs-offset-2">
+              <h3 class="text-center">
+                <br>
+               <%= link_to(class: "btn btn-primary") do %>
+                <i class="fa fa-wrench"> De quel travaux ai-je besoin ?</i>
+              <% end %> </h3>
+               <br>
+              <br>
+            </div>
+          <% end %>
+      </p>
+     <div class="horizontal_spacer"></div>
+     <div class="horizontal_spacer"></div>
+   </div>
+  </div>
+</div>

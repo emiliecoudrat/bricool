@@ -28,9 +28,9 @@ class CustomersController < ApplicationController
   end
 
   def destroy
+    authorize @customer
     @customer.destroy
-    redirect_to home_index
-    authorize @bricooler
+    redirect_to home_index_path
   end
 
   def email
