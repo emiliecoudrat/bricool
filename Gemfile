@@ -69,3 +69,4 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'pundit'
 
 
+
