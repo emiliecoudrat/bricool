@@ -15,17 +15,18 @@
 
                           <%= f.text_field :last_name, autofocus: true, label: "Mon Nom de famille" %>
 
-                          <%= f.text_field :phone, label: "Mon téléphone" %>
+                          <%= f.phone_field :phone, label: "Mon téléphone" %>
                           <br>
                           <div class="col-sm-offset-2 col-sm-8 ">
                             <%= f.fields_for(:current_user, :url => { :action => "update_password" }) do |user| %>
-                            <br>
-                            <%=  user.text_field :email, autofocus: true, label: "Modifier mon email"%>
-                            <%= user.password_field :password, :autocomplete => "off"  %>
-                            <div class="field">
-                              <%= f.password_field :password_confirmation %>
-                            </div>
-                          <% end %>
+                              <br>
+                                <%=  user.text_field :email, autofocus: true, label: "Modifier mon email"%>
+                                <%= user.password_field :password, :autocomplete => "off"  %>
+                              <div class="field">
+                                <%= user.password_field :password_confirmation %>
+                                <%= user.submit %>
+                              </div>
+                            <% end %>
                           </div>
                         </div>
                       </div>
@@ -41,8 +42,9 @@
                         <ul class="list-unstyled">
                           <br>
                           <br>
-                          <li><a href="#" class="strong edit-link" id="my-info">Mes informations</a></li>
-                          <li><a href="#" class="edit-link" id="my-pic">Photo de profil</a></li>
+                          <li><a href="#" class="edit-link" id="my-pic">Ajouter une photo à mon profil</a></li>
+                          <br>
+                          <%= link_to 'Voir mon profil', @customer if policy(@customer).show? %></i>
                         </ul>
                       </div>
                 <% end %>

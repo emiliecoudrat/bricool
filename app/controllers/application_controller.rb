@@ -17,4 +17,15 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You are not authorized to perform this action."
       redirect_to(root_path)
   end
+
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      # Sign in the user by passing validation in case their password changed
+      sign_in @user, :bypass => true
+      redirect_to root_path
+    else
+      render "edit"
+    end
+  end
 end

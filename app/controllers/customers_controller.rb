@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
   def update
     email
     if @customer.update(customer_params)
-    redirect_to home_index_path
+    redirect_to customer_path
     else
       render :edit
     end
