@@ -1,15 +1,10 @@
 class EstimatePolicy < ApplicationPolicy
-attr_accessor :customer
+attr_accessor :current_user, :customer, :estimate
 
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
-
-  def initialize(customer, estimate)
-    @customer = customer
+  def initialize(current_user, estimate)
+    @current_user = current_user
     @estimate = estimate
+    @customer = customer
   end
 
   def new?
@@ -17,11 +12,20 @@ attr_accessor :customer
   end
 
   def create?
-    customer.present?
+    customer.present? && customer == estimate.customer
   end
 
   def estimate
     @estimate
   end
 
+  def customer
+    @customer
+  end
+
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end
 end

@@ -4,15 +4,13 @@
       <li><%= link_to "Bricoolers", bricoolers_path %></li>
       <li>|</li>
       <li><%= link_to "Travaux", services_path %></li>
+      <li>|</li>
 
-      <% if policy(Estimate).new? && if user_signed_in? %>
+
         <li>|</li>
-        <li><%= link_to "Demande de devis", new_customer_estimate_path(current_user.profileable) %></li>
-          <% else %>
-          <li>|</li>
-          <li><%= link_to "Demande de devis", new_user_session_path %></li>
-          <% end %>
-      <% end %>
+
+
+
       <li>|</li>
       <li><%= link_to "Devenir Bricooler", new_user_session_path %></li>
     </div>
