@@ -6,13 +6,17 @@
       <li><%= link_to "Travaux", services_path %></li>
       <li>|</li>
 
-
-        <li>|</li>
-
-
+      <% if user_signed_in? %>
+      <li><%= link_to "Demande de devis", new_customer_estimate_path(@estimate, :customer_id) if policy(Estimate).new? %></li>
+      <% else %>
+      <li><%= link_to "Demande de devis", new_user_session_path %></li>
+      <% end %>
 
       <li>|</li>
       <li><%= link_to "Devenir Bricooler", new_user_session_path %></li>
     </div>
   </div>
 </nav>
+
+
+

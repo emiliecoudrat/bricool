@@ -4,7 +4,6 @@ attr_accessor :current_user, :customer, :estimate
   def initialize(current_user, estimate)
     @current_user = current_user
     @estimate = estimate
-    @customer = customer
   end
 
   def new?
@@ -12,20 +11,23 @@ attr_accessor :current_user, :customer, :estimate
   end
 
   def create?
-    customer.present? && customer == estimate.customer
+    true
+    # if current_user.profileable_type == 'Customer'
+    #   true
+    # end
+  end
+
+  def current_user
+    @current_user
   end
 
   def estimate
     @estimate
   end
 
-  def customer
-    @customer
-  end
-
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
+  # class Scope < Scope
+  #   def resolve
+  #     scope.all
+  #   end
+  # end
 end

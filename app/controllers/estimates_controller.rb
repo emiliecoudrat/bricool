@@ -1,6 +1,6 @@
 class EstimatesController < ApplicationController
   before_action :set_user
-  before_action :set_customer, only: [:new, :create, :show]
+  # before_action :set_customer, only: [:new, :create, :show]
   # after_action :verify_authorized, except: :index, unless: :devise_controller?
 
   def new
@@ -29,9 +29,9 @@ class EstimatesController < ApplicationController
 
   private
 
-  def set_customer
-    @customer = Customer.find(params[:customer_id])
-  end
+  # def set_customer
+  #   @customer = Customer.find(params[:id])
+  # end
 
   def set_user
     @user = current_user
