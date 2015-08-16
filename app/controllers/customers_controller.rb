@@ -41,6 +41,7 @@ private
 
   def set_customer
     @customer = current_user.profileable
+    raise
   end
 
 
