@@ -5,12 +5,7 @@ class CustomersController < ApplicationController
 
 
   def show
-      # @customer = current_user
-      authorize @customer
-    # if current_user.first_name.nil? || current_user.last_name.nil?
-    #   redirect_to edit_customer_path
-    #   flash[:alert] = "N'oubliez pas de complétez votre profil !"
-    # end
+    authorize @customer
   end
 
   def edit
@@ -40,12 +35,12 @@ class CustomersController < ApplicationController
 private
 
   def set_customer
-    @customer = current_user.profileable
+    @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
   end
 
 
   def set_user
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def customer_params
