@@ -36,9 +36,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-
-
-
   private
 
   def after_sign_up_path_for(resource)
@@ -50,6 +47,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def customer?
+    @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
+  end
 
   def after_update_path_for(resource)
   end

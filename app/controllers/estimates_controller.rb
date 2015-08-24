@@ -5,7 +5,7 @@ class EstimatesController < ApplicationController
 
   def new
     @estimate = Estimate.new
-    # authorize @estimate
+    authorize @estimate
   end
 
   def create
@@ -17,25 +17,28 @@ class EstimatesController < ApplicationController
     else
       flash[:notice] = "Désolée, merci de reformuler votre demande."
       render :new
-      raise
     end
 
-    # authorize @estimate
+    authorize @estimate
 
   end
 
   def show
-    # authorize @estimate
+    authorize @estimate
   end
 
   private
 
   def set_customer
-    @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
+    @customer = current_user.profileable(params[:customer_id])
+    # @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
+    # @customer = Customer.new
+    # @customer = Customer.find(params[:id])
   end
 
   def set_user
     @user = current_user
+    # @user = User.find(params[:id])
   end
 
   def estimate_params
