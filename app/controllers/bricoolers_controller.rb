@@ -39,11 +39,12 @@ class BricoolersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bricooler
-      @bricooler = User.where(profileable_type: "Bricooler").find(params[:id]).profileable
+      @bricooler = current_user.profileable(params[:bricooler_id])
+      # @bricooler = User.where(profileable_type: "Bricooler").find(params[:id]).profileable
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

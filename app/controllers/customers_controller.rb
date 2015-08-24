@@ -3,7 +3,6 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   after_action :verify_authorized, except: :index, unless: :devise_controller?
 
-
   def show
     authorize @customer
   end
@@ -35,15 +34,16 @@ class CustomersController < ApplicationController
 private
 
   def set_customer
-    @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
+    # @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
+    # @customer = Customer.find(params[:id])
+    @customer = current_user.profileable(params[:customer_id])
   end
 
-
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
+    params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode)
   end
 end
