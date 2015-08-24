@@ -23,4 +23,16 @@ class User < ActiveRecord::Base
     end
   end
 
+   def bricooler?
+    if profileable_type == 'Bricooler'
+      true
+    end
+  end
+
+  def customer?
+    if profileable_type == 'Customer'
+      true
+    end
+  end
+
 end

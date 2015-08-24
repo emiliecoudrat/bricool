@@ -42,13 +42,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def after_sign_up_path_for(resource)
-    case current_user.profileable_type
+    case @user.profileable_type
     when "Bricooler"
       return edit_bricooler_path(resource.id)
     when "Customer"
       return edit_customer_path(resource.id)
     end
   end
+
 
   def after_update_path_for(resource)
   end
