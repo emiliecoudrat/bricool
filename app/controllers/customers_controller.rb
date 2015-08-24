@@ -5,12 +5,7 @@ class CustomersController < ApplicationController
 
 
   def show
-      # @customer = current_user
-      authorize @customer
-    # if current_user.first_name.nil? || current_user.last_name.nil?
-    #   redirect_to edit_customer_path
-    #   flash[:alert] = "N'oubliez pas de complétez votre profil !"
-    # end
+    authorize @customer
   end
 
   def edit
@@ -18,8 +13,9 @@ class CustomersController < ApplicationController
   end
 
   def update
+    email
     if @customer.update(customer_params)
-    redirect_to home_index
+    redirect_to customer_path
     else
       render :edit
     end
@@ -27,23 +23,27 @@ class CustomersController < ApplicationController
   end
 
   def destroy
+    authorize @customer
     @customer.destroy
-    redirect_to home_index
-    authorize @bricooler
+    redirect_to home_index_path
+  end
+
+  def email
+    current_user.profileable_id = @customer.id
   end
 
 private
 
   def set_customer
-    @customer = current_user.profileable
+    @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
   end
 
 
   def set_user
-      @user = current_user
+    @user = User.find(params[:id])
   end
 
   def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode, :profileable_type, :profileable_id)
+    params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
   end
 end
