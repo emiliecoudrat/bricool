@@ -7,7 +7,7 @@
       <li>|</li>
 
       <% if user_signed_in? %>
-      <li><%= link_to "Demande de devis", new_customer_estimate_path(@estimate, :customer_id) if policy(Estimate).new? %></li>
+      <li><%= link_to "Demande de devis", new_customer_estimate_path(@customer) if policy(Estimate).new? %></li>
       <% else %>
       <li><%= link_to "Demande de devis", new_user_session_path %></li>
       <% end %>

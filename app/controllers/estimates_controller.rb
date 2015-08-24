@@ -1,11 +1,11 @@
 class EstimatesController < ApplicationController
   before_action :set_user
-  # before_action :set_customer, only: [:new, :create, :show]
-  # after_action :verify_authorized, except: :index, unless: :devise_controller?
+  before_action :set_customer
+  after_action :verify_authorized, except: :index, unless: :devise_controller?
 
   def new
     @estimate = Estimate.new
-    authorize @estimate
+    # authorize @estimate
   end
 
   def create
@@ -17,21 +17,22 @@ class EstimatesController < ApplicationController
     else
       flash[:notice] = "Désolée, merci de reformuler votre demande."
       render :new
+      raise
     end
 
-    authorize @estimate
+    # authorize @estimate
 
   end
 
   def show
-    authorize @estimate
+    # authorize @estimate
   end
 
   private
 
-  # def set_customer
-  #   @customer = Customer.find(params[:id])
-  # end
+  def set_customer
+    @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
+  end
 
   def set_user
     @user = current_user
