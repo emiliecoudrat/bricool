@@ -16,7 +16,7 @@ class BricoolersController < ApplicationController
 
   def edit
     authorize @bricooler
-    raisep
+
   end
 
   def update
