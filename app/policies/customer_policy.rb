@@ -1,7 +1,6 @@
 class CustomerPolicy < ApplicationPolicy
   attr_accessor :current_user, :customer
 
-
   def initialize(current_user, customer)
     @current_user = current_user
     @customer = customer

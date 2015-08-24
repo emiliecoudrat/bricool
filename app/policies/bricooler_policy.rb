@@ -1,5 +1,5 @@
 class BricoolerPolicy < ApplicationPolicy
-  attr_accessor :current_user, :Bricooler
+  attr_accessor :current_user, :bricooler
 
   class Scope < Scope
     def resolve
