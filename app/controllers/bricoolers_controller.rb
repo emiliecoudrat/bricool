@@ -50,8 +50,4 @@ class BricoolersController < ApplicationController
     def bricooler_params
       params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
-
-    # def user_params
-    #   params.require(:user).permit(:first_name, :lastname, :address, :city, :zipcode, :profileable_type, :profileable_id)
-    # end
 end
