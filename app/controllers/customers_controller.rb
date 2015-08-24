@@ -45,10 +45,10 @@ private
 
 
   def set_user
-      @user = current_user
+    @user = current_user
   end
 
   def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode, :profileable_type, :profileable_id)
+    params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
   end
 end

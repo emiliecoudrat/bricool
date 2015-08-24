@@ -16,6 +16,7 @@ class BricoolersController < ApplicationController
 
   def edit
     authorize @bricooler
+
   end
 
   def update
@@ -38,16 +39,16 @@ class BricoolersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bricooler
-      @bricooler = current_user.profileable
-  end
+      @bricooler = User.where(profileable_type: "Bricooler").find(params[:id]).profileable
+    end
 
     def set_user
-      @user = current_user
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bricooler_params
-      params.require(:bricooler).permit(:first_name, :last_name, :address, :city, :zipcode, :profileable_type, :profileable_id)
+      params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
 
     # def user_params
