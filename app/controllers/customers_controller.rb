@@ -37,6 +37,7 @@ private
     # @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
     # @customer = Customer.find(params[:id])
     @customer = current_user.profileable(params[:customer_id])
+
   end
 
   def set_user
@@ -44,6 +45,6 @@ private
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode)
+    params.require(:customer).permit(:first_name, :last_name, :phone, :address, :city, :zipcode)
   end
 end
