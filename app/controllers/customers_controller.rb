@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
   def update
     email
     if @customer.update(customer_params)
-    redirect_to customer_path
+      redirect_to customer_path
     else
       render :edit
     end
@@ -34,9 +34,7 @@ class CustomersController < ApplicationController
 private
 
   def set_customer
-    # @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
-    # @customer = Customer.find(params[:id])
-    @customer = current_user.profileable(params[:customer_id])
+    @customer = current_user.profileable.find(params[:customer_id])
   end
 
   def set_user
@@ -44,6 +42,6 @@ private
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :address, :city, :zipcode)
+    params.require(:customer).permit(:id, :first_name, :last_name, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
   end
 end

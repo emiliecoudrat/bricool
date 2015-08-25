@@ -1,16 +1,25 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2>Votre demande de devis</h2>
+    </div>
 
-<%= bootstrap_form_for [@customer, @estimate] do |f| %>
-  <p>
-    <%= f.text_field :title %>
-    <%= f.text_area :description %>
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-    <% f.hidden_field :customer_id %>
-    <% f.hidden_field :id %>
-  </p>
-  <p><%= f.submit "valider" %></p>
+    <div class="col-sm-6 col-sm-offset-3">
 
-<% end %>
+      <br />
+      <%= bootstrap_form_for [@customer, @estimate] do |f| %>
+        <p>
+        <%= f.text_field :title, label: "Titre" %>
+        <%= f.text_area :description, label: "Description de la demande" %>
+        <%= f.file_field :picture, label: "Joindre une photo" %>
+        <% f.hidden_field :customer_id %>
+        <% f.hidden_field :id %>
+        </p>
+        <p><%= f.submit "valider" %></p>
+      <% end %>
 
-</div>
+      <br />
+
+    </div> <!-- ferme la col -->
+  </div> <!-- ferme la row  -->
+</div> <!-- ferme le container -->
