@@ -51,6 +51,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
   end
 
+  # def bricooler?
+  #   @bricooler = User.where(profileable_type: "Bricooler").find(params[:id]).profileable
+  # end
+
   def after_update_path_for(resource)
   end
 

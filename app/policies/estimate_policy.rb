@@ -1,5 +1,5 @@
 class EstimatePolicy < ApplicationPolicy
-attr_accessor :current_user, :customer, :estimate
+attr_accessor :current_user, :estimate
 
   def initialize(current_user, estimate)
     @current_user = current_user
@@ -11,23 +11,7 @@ attr_accessor :current_user, :customer, :estimate
   end
 
   def create?
-    true
-    # if current_user.profileable_type == 'Customer'
-    #   true
-    # end
+    current_user.profileable_type == "Customer"
   end
 
-  def current_user
-    @current_user
-  end
-
-  def estimate
-    @estimate
-  end
-
-  # class Scope < Scope
-  #   def resolve
-  #     scope.all
-  #   end
-  # end
 end

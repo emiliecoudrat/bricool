@@ -31,14 +31,10 @@ class EstimatesController < ApplicationController
 
   def set_customer
     @customer = current_user.profileable(params[:customer_id])
-    # @customer = User.where(profileable_type: "Customer").find(params[:id]).profileable
-    # @customer = Customer.new
-    # @customer = Customer.find(params[:id])
   end
 
   def set_user
     @user = current_user
-    # @user = User.find(params[:id])
   end
 
   def estimate_params
