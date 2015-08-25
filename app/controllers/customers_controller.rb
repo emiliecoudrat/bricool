@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
 private
 
   def set_customer
-    @customer = current_user.profileable.find(params[:customer_id])
+    @customer = current_user.profileable(params[:customer_id])
   end
 
   def set_user
