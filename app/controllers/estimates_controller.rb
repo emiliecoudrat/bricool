@@ -1,15 +1,14 @@
 class EstimatesController < ApplicationController
-  before_action :set_user
   before_action :set_customer
   after_action :verify_authorized, except: :index, unless: :devise_controller?
 
   def new
-    @estimate = Estimate.new
+    @estimate = @customer.estimates.new
     authorize @estimate
   end
 
   def create
-    @estimate = Estimate.new(estimate_params)
+    @estimate = @customer.estimates.new(estimate_params)
     @estimate.customer_id = current_user.profileable.id
     if @estimate.save
       flash[:notice] = "Merci pour votre demande! Nous reviendrons vers vous dans moins de 24h."
@@ -18,9 +17,7 @@ class EstimatesController < ApplicationController
       flash[:notice] = "Désolée, merci de reformuler votre demande."
       render :new
     end
-
     authorize @estimate
-
   end
 
   def show
@@ -33,11 +30,7 @@ class EstimatesController < ApplicationController
     @customer = current_user.profileable(params[:customer_id])
   end
 
-  def set_user
-    @user = current_user
-  end
-
   def estimate_params
-    params.require(:estimate).permit(:customer_id, :title, :description, :picture)
+    params.require(:estimate).permit(:customer_id, :title, :description, :picture, customer_attributes: [ :id ])
   end
 end

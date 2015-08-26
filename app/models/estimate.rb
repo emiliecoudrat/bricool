@@ -1,5 +1,6 @@
 class Estimate < ActiveRecord::Base
   belongs_to :customer
+  # delegate :user, :to => :customer
 
   validates :title, :description, :customer_id, presence: true
 
