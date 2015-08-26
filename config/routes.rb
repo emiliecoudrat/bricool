@@ -7,19 +7,23 @@ root to: "home#index"
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     resources :estimates, only: [:new, :create]
-    resources :bookings, only: [:index, :edit, :update, :destroy]
+    resources :bookings, only: [:index, :new, :create :edit, :update, :destroy]
     resources :ratings, only: [:new, :create]
   end
 
-  resources :bricoolers, only: [:index, :show, :edit, :update, :destroy] do
-    resources :ratings, only: [:index, :show, :destroy]
-    resources :availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :bricoolers, only: [:index, :show] do
+    resources :ratings, only: [:index, :show]
+    resources :services, only: [:index]
+    resources :availabilities, only: [:index]
   end
 
-  resources :services do
-    resources :bookings, only: [:new, :create]
+  namespace :account do
+    resource :profile, only: [:show, :edit, :update, :destroy]
+    resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :bookings, only: [:index]
+    resources :availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
   end
+
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "users/registrations"}
   # resource :user, only: [:edit] do
