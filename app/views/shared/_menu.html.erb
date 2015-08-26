@@ -3,7 +3,7 @@
     <div class="list-inline">
       <li><%= link_to "Bricoolers", bricoolers_path %></li>
       <li>|</li>
-      <li><%= link_to "Travaux", bricooler_services_path(current_user) %></li>
+      <li><%= link_to "Travaux", services_path(current_user) %></li>
       <li>|</li>
 
       <% if user_signed_in? && if policy(Estimate).new? %>
