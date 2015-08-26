@@ -1,0 +1,1 @@
+availabilities_controller.rb
