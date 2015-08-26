@@ -13,9 +13,11 @@ root to: "home#index"
 
   resources :bricoolers, only: [:index, :show] do
     resources :ratings, only: [:index, :show]
-    resources :services, only: [:index]
+    # resources :services, only: [:index]
     resources :availabilities, only: [:index]
   end
+
+  resources :services, only: [:index] #j'ai créé cette route pour éviter de la lier à un bricooler
 
   namespace :account do
     resource :profile, only: [:show, :edit, :update, :destroy]

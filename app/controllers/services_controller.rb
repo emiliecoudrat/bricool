@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   after_action :verify_authorized, except: :index, unless: :devise_controller?
+  skip_before_action :authenticate_user!
 
   def index
     @services = policy_scope(Service)
