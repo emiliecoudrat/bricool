@@ -1,1 +1,5 @@
-bookings_controller.rb
+module Account
+  class BookingsController < ApplicationController
+
+  end
+end
