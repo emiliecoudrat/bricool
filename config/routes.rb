@@ -7,7 +7,7 @@ root to: "home#index"
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     resources :estimates, only: [:new, :create]
-    resources :bookings, only: [:index, :new, :create :edit, :update, :destroy]
+    resources :bookings, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :ratings, only: [:new, :create]
   end
 
