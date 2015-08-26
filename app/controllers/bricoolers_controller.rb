@@ -1,7 +1,7 @@
 class BricoolersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
-  before_action :set_bricooler, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_bricooler, only: [:show]
+  before_action :set_user, only: [:index, :show]
   after_action :verify_authorized, except: :index, unless: :devise_controller?
 
   def index
@@ -12,36 +12,17 @@ class BricoolersController < ApplicationController
     authorize @bricooler
   end
 
-  def edit
-    authorize @bricooler
+private
+
+  def set_bricooler
+    @bricooler = Bricooler.find(params[:id])
   end
 
-  def update
-    authorize @bricooler
-    if @bricooler.update(bricooler_params)
-    redirect_to bricooler_path
-    else
-      render :edit
-    end
+  def set_user
+    @user = Bricooler.find(params[:id]).user
   end
 
-  def destroy
-    authorize @bricooler
-    @bricooler.destroy
-    redirect_to home_index
+  def bricooler_params
+    params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
   end
-
-  private
-
-    def set_bricooler
-      @bricooler = Bricooler.find(params[:id])
-    end
-
-    def set_user
-      @user = Bricooler.find(params[:id]).user
-    end
-
-    def bricooler_params
-      params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
-    end
 end
