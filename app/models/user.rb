@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profileable
   validates :email, presence: true
 
+  # has_many :estimates, through: :customer #ajouté pour créer lien user/estimate
+  # has_many :services, through: :bricooler #ajouté pour créer lien user/service
+
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

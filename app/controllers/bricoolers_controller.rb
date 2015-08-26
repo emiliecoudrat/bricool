@@ -6,7 +6,6 @@ class BricoolersController < ApplicationController
 
   def index
     @bricoolers = policy_scope(Bricooler)
-    @bricoolers = Bricooler.all
   end
 
   def show
@@ -18,12 +17,12 @@ class BricoolersController < ApplicationController
   end
 
   def update
+    authorize @bricooler
     if @bricooler.update(bricooler_params)
     redirect_to bricooler_path
     else
       render :edit
     end
-    authorize @bricooler
   end
 
   def destroy
@@ -32,16 +31,14 @@ class BricoolersController < ApplicationController
     redirect_to home_index
   end
 
-
-
   private
 
     def set_bricooler
-      @bricooler = current_user.profileable(params[:bricooler_id])
+      @bricooler = Bricooler.find(params[:id])
     end
 
     def set_user
-      @user = current_user
+      @user = Bricooler.find(params[:id]).user
     end
 
     def bricooler_params

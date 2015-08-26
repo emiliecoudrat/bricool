@@ -12,13 +12,13 @@ class CustomersController < ApplicationController
   end
 
   def update
+    authorize @customer
     email
     if @customer.update(customer_params)
       redirect_to customer_path
     else
       render :edit
     end
-    authorize @customer
   end
 
   def destroy
@@ -34,11 +34,11 @@ class CustomersController < ApplicationController
 private
 
   def set_customer
-    @customer = current_user.profileable(params[:customer_id])
+    @customer = Customer.find(params[:id])
   end
 
   def set_user
-    @user = current_user
+    @user = Customer.find(params[:id]).user
   end
 
   def customer_params
