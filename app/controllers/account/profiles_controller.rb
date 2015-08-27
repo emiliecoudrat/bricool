@@ -1,7 +1,7 @@
 module Account
   class ProfilesController < ApplicationController
     before_action :set_bricooler, only: [:show, :edit, :update, :destroy]
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    # before_action :set_user, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
 
     def show
@@ -29,9 +29,9 @@ module Account
       @bricooler = Bricooler.find(params[:id])
     end
 
-    def set_user
-     @user = Bricooler.find(params[:id]).user
-    end
+    # def set_user
+    #  @user = Bricooler.find(params[:id]).user
+    # end
 
     def bricooler_params
       params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])

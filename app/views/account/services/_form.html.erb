@@ -1,2 +1,38 @@
-<h4>Le form des service</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <br />
 
+      <h4>Bienvenue <%= @bricooler.first_name %></h4>
+
+      <p>Définissez les travaux pour lesquels vous êtes compétents et à quel prix.</p>
+      <p>Attention, <strong>sur Bricool les prix sont fixés à l'avance</strong>, estimez au mieux la prestation :</p>
+      <p>
+      <li>transport inclus</li>
+      <li>possibilité, le jour de la prestation, d'acheter du matériel supplémentaire. L'achat de matériel sera payé à l'avance par le client ou remboursé sur facutre auprès du Bricooler chargé de l'achat</li>
+      <li>pour les professionnels, pensez à inclure la TVA</li>
+      </p>
+      <p>Tous les prix seront majorés de 15%, correspondant à la commission Bricool.</p>
+      <br />
+
+      <h4>Mes travaux</h4>
+
+      <%= bootstrap_form_for [:account, @service] do |f| %>
+
+        <h5>Pose de détecteur</h5>
+        <div class="list-inline">
+          <% f.hidden_field :category %>
+          <li><%= f.check_box :name (1 => "Pose"), label: "Pose d'un détecteur de fumée (détecteur non fourni)" %></li>
+          <li>- Votre prix:</li>
+          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <li>€</li>
+        </div>
+
+        <%= f.submit "OK", class: "brand-btn" %>
+
+      <% end %>
+      <br />
+
+    </div>
+  </div>
+</div>

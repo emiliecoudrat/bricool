@@ -1,8 +1,8 @@
 module Account
   class ServicesController < ApplicationController
-    # before_action :set_bricooler, only: [:show, :new, :create, :edit, :update, :destroy]
-    # before_action :set_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    before_action :set_service, only [:show, :edit, :update, :destroy]
+    before_action :set_bricooler, only: [:show, :new, :create, :edit, :update, :destroy]
+    before_action :set_service, only: [:edit, :update, :destroy]
+    skip_after_action :verify_authorized
 
     def index
       @services = current_user.services
@@ -13,10 +13,9 @@ module Account
     end
 
     def create
-      @service = current_user.services.new(service_params)
-
+      @service = current_user.profileable.services.new(service_params)
       if @service.save
-        redirect_to @service, notice: 'Le service a bien été crée.'
+        redirect_to root_path, notice: 'Le service a bien été crée.'
       else
         render :new
       end
@@ -44,20 +43,12 @@ module Account
       @service = Service.find(params[:id])
     end
 
-    # def set_bricooler
-    #   @bricooler = Bricooler.find(params[:id])
-    # end
-
-    # def set_user
-    #   @user = Bricooler.find(params[:id]).user
-    # end
-
-    # def bricooler_params
-    #   params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
-    # end
+    def set_bricooler
+      @bricooler = current_user.profileable
+    end
 
     def service_params
-      params.require(:service).permit(:name, :category, :price, :bricooler_id)
+      params.require(:service).permit(:name, :category, :price)
     end
 
   end
