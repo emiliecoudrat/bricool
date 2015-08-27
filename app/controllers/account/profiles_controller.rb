@@ -2,6 +2,8 @@ module Account
   class ProfilesController < ApplicationController
     before_action :set_bricooler, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
+    skip_after_action :verify_authorized
+
 
     def show
     end
@@ -10,9 +12,8 @@ module Account
     end
 
     def update
-      @bricooler = current_user
       if @bricooler.update(bricooler_params)
-      redirect_to account_profile_path
+      redirect_to @profile
       else
         render :edit
       end
@@ -26,7 +27,7 @@ module Account
   private
 
     def set_bricooler
-      @bricooler = Bricooler.find(params[:id])
+      @bricooler = current_user
     end
 
     def bricooler_params

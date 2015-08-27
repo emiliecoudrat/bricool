@@ -1,13 +1,19 @@
 <h1 class="text-center">Mon profil</h2>
-  </strong>Prénom :<%= @bricooler.first_name %>
-  <strong>Nom :</strong> <%= @bricooler.last_name %>
+  <strong>Mon email :</strong> <%= @bricooler.user.email %>
   <br>
-  <strong>Téléphone :</strong> <%= @bricooler.phone %>
+  <strong>Mon prénom :</strong> <%= @bricooler.first_name %>
   <br>
-  <strong>Email :</strong> <%= @bricooler.user.email %>
+  <strong>Mon Nom :</strong> <%= @bricooler.last_name %>
+  <br>
+  <strong>Mon téléphone :</strong> <%= @bricooler.phone %>
+  <br>
+  <strong>Ma description :</strong> <%= @bricooler.bio %>
   <br>
   <br>
     <i class="fa fa-pencil"> <%= link_to'Compléter mon profil', edit_account_profile_path %></i>
-        <div class="horizontal_minispacer"> </div>
-          <i class="fa fa-trash"> <%= link_to 'Supprimer mon profil', @bricooler, method: :delete, data: { confirm: "Sûre de vouloir supprimer votre profil ?"} %></i>
-           <br>
+      <div class="horizontal_minispacer"></div>
+      <i class="fa fa-trash"> <%= link_to 'Supprimer mon profil', @bricooler, method: :delete, data: { confirm: "Sûre de vouloir supprimer votre profil ?"} %> </i>
+      <br>
+    </p>
+  <div class="horizontal_spacer"></div>
+  <div class="horizontal_spacer"></div>
