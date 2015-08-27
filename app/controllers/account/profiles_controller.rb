@@ -13,7 +13,7 @@ module Account
 
     def update
       if @bricooler.update(bricooler_params)
-      redirect_to @profile
+      redirect_to account_profile_path
       else
         render :edit
       end

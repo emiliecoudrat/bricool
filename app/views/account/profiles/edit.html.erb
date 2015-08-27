@@ -6,7 +6,7 @@
       <!-- ouverture des 3 premières div -->
       <h1>Complétez votre profil</h1>
       <br>
-        <%= bootstrap_form_for [current_user], :url => edit_account_profile_path(@profile) do |f| %>
+        <%= bootstrap_form_for (:current_user) do |f| %>
           <form class="form-horizontal">
             <div class="form-group">
               <div class="col-sm-offset-1 col-sm-10 ">
