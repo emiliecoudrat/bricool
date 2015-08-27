@@ -9,6 +9,7 @@ module Account
     end
 
     def edit
+      # profile
     end
 
     def update
@@ -24,10 +25,14 @@ module Account
       redirect_to home_index
     end
 
+    def profile
+      # @profile = current_user.profileable
+    end
+
   private
 
     def set_bricooler
-      @bricooler = current_user
+      @bricooler = current_user.profileable
     end
 
     def bricooler_params

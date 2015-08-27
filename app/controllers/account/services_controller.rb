@@ -2,7 +2,7 @@ module Account
   class ServicesController < ApplicationController
     # before_action :set_bricooler, only: [:show, :new, :create, :edit, :update, :destroy]
     # before_action :set_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    before_action :set_service, only [:show, :edit, :update, :destroy]
+    before_action :set_service, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
 
     def index

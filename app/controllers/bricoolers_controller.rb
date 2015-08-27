@@ -10,7 +10,6 @@ class BricoolersController < ApplicationController
 
   def show
     authorize @bricooler
-
   end
 
 private
