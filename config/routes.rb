@@ -20,7 +20,7 @@ root to: "home#index"
   resources :services, only: [:index] #j'ai créé cette route pour éviter de la lier à un bricooler
 
   namespace :account do
-    resource :profile, only: [:show, :edit, :update, :destroy]
+    resource :profile, only: [:show, :edit, :update, :destroy], as: "bricooler"
     resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :bookings, only: [:index]
     resources :availabilities, only: [:index, :new, :create, :edit, :update, :destroy]

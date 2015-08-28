@@ -1,0 +1,60 @@
+
+ <div class="container text-center">
+<br>
+    <div class="row">
+         <div class="col-sm-8 col-sm-offset-2 ">
+          <h1>Complétez votre profil</h1>
+            <br>
+                <%= bootstrap_form_for([:account, @profile]) do |f| %>
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <div class="col-sm-offset-1 col-sm-10 ">
+                        <%= f.text_field :first_name, autofocus: true, label: "Mon Prénom" %>
+
+                        <%= f.text_field :last_name, autofocus: true, label: "Mon Nom de famille" %>
+
+                        <%= f.phone_field :phone, label: "Mon téléphone" %>
+
+                        <%= f.text_area :bio, autofocus: true, label: "Ma description" %>
+                                                  <br>
+
+                            <div class="col-sm-offset-4 col-sm-4 ">
+                              <div class="form-actions">
+                                <%= f.submit "C'est tout bon !", class: "brand-btn" %>
+                                <br>
+                              </div>
+                            </div>
+                            <br>
+                              <div class="col-sm-offset-2 col-sm-8 ">
+                                <br>
+                                <br>
+                                <br>
+                                <%= f.fields_for(:current_user, :url => { :action => "update_password" }) do |user| %>
+                                <%=  user.text_field :email, autofocus: true, label: "Modifier mon email"%>
+                                <%= user.password_field :password, :autocomplete => "off"  %>
+                                  <div class="field">
+                                    <%= user.password_field :password_confirmation %>
+                                    <br>
+                                    <%= user.submit "Je confirme les changements", class: "brand-btn" %>
+                                  </div>
+                                <% end %>
+                              </div>
+                    </div>
+                  </div>
+                 </form>
+               <% end %>
+                 <div class="col-sm-offset-4 col-sm-4 ">
+                     <ul class="list-unstyled">
+                          <br>
+                          <br>
+                          <li><a href="#" class="edit-link" id="my-pic">Ajouter une photo à mon profil</a><img src="..." alt="..." class="img-rounded"></li>
+                          <br>
+                          <%= link_to 'Voir mon profil', account_bricooler_path %></i>
+                     </ul>
+                  </div>
+          <br>
+      </div>
+    </div><!-- ferme la row -->
+  </div>
+  <br>
+  <br>
