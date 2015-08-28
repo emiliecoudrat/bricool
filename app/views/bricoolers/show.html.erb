@@ -6,17 +6,19 @@
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
          <br>
-          <strong>Sa description :</strong> <%= @bricooler.bio %>
-            <div class="col-xs-8 col-xs-offset-2">
-              <h3 class="text-center">
+           <strong>Son Prénom :</strong> <%= @bricooler.first_name.capitalize %>
+           <br>
+           <strong>Sa description :</strong> <%= @bricooler.bio %>
+              <div class="col-xs-8 col-xs-offset-2">
+                <h3 class="text-center">
+                  <br>
+                 <%= link_to(class: "btn btn-primary") do %>
+                  <i class="fa fa-wrench"> De quel travaux ai-je besoin ?</i>
+                 <% end %>
+                </h3>
+                 <br>
                 <br>
-               <%= link_to(class: "btn btn-primary") do %>
-                <i class="fa fa-wrench"> De quel travaux ai-je besoin ?</i>
-               <% end %>
-              </h3>
-               <br>
-              <br>
-            </div>
+              </div>
          <div class="horizontal_spacer"></div>
          <div class="horizontal_spacer"></div>
        </div>
