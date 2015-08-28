@@ -14,6 +14,7 @@ module Account
 
     def create
       @service = current_user.profileable.services.new(service_params)
+      raise
       if @service.save
         redirect_to root_path, notice: 'Le service a bien été crée.'
       else
