@@ -10,7 +10,7 @@
   <strong>Ma description :</strong> <%= @bricooler.bio %>
   <br>
   <br>
-    <i class="fa fa-pencil"> <%= link_to'Compléter mon profil', edit_account_profile_path %></i>
+    <i class="fa fa-pencil"> <%= link_to'Compléter mon profil', edit_account_bricooler_path %></i>
       <div class="horizontal_minispacer"></div>
       <i class="fa fa-trash"> <%= link_to 'Supprimer mon profil', @bricooler, method: :delete, data: { confirm: "Sûre de vouloir supprimer votre profil ?"} %> </i>
       <br>

@@ -9,12 +9,12 @@ module Account
     end
 
     def edit
-      # profile
+      profile
     end
 
     def update
       if @bricooler.update(bricooler_params)
-      redirect_to account_profile_path
+      redirect_to account_bricooler_path
       else
         render :edit
       end
@@ -26,7 +26,7 @@ module Account
     end
 
     def profile
-      # @profile = current_user.profileable
+      @profile = current_user.profileable
     end
 
   private
