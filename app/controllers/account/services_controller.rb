@@ -48,6 +48,7 @@ module Account
     end
 
     def service_params
+      p params
       params.require(:service).permit(:name, :category, :price)
     end
 

@@ -20,152 +20,55 @@
       <%= bootstrap_form_for [:account, @service] do |f| %>
 
         <h5>Pose de détecteur</h5>
+        <%= f.fields_for :service do |a| %>
         <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Pose d'un détecteur de fumée" %>
-          <li><%= f.check_box :name, {label: "Pose d'un déctecteur de fumée (matériel non fourni)"}, "Pose de détecteur de fumée", "0" %></li>
+          <%= a.hidden_field :category, :value => "Pose d'un détecteur de fumée" %>
+          <li><%= a.check_box :name, {label: "Pose d'un déctecteur de fumée (matériel non fourni)"}, "Pose de détecteur de fumée", "0" %></li>
           <li>- Votre prix:</li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <li><%= a.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
+        <% end %>
 
         <h5>Bricolage à l'heure</h5>
+        <%= f.fields_for :service do |b| %>
         <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Bricolage à l'heure" %>
-          <li><%= f.check_box :name, {label: "Bricolage à l'heure"}, "Bricolage à l'heure", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= b.hidden_field :category, :value => "Bricolage à l'heure" %>
+          <li><%= b.check_box :name, {label: "Bricolage à l'heure"}, "Bricolage à l'heure", "0" %></li>
+          <li><%= b.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
           <em><p>Outils fournis par le bricooleur</p></em>
         </div>
+        <% end %>
 
         <h5>Montage de meubles</h5>
+        <%= f.fields_for :service do |c| %>
         <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Montage de meubles" %>
-          <li><%= f.check_box :name, {label: "Meuble simple (tabouret, chaise, lit bébé...)"}, "Meuble simple", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= c.hidden_field :category, :value => "Montage de meubles" %>
+          <li><%= c.check_box :name, {label: "Meuble simple (tabouret, chaise, lit bébé...)"}, "Meuble simple", "0" %></li>
+          <li><%= c.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
+        <% end %>
+
+        <%= f.fields_for :service do |d| %>
         <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Montage de meubles" %>
-          <li><%= f.check_box :name, {label: "Meuble moyen (lit enfant/adulte, commode, bureau simple, canapé...)"}, "Meuble moyen", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= d.hidden_field :category, :value => "Montage de meubles" %>
+          <li><%= d.check_box :name, {label: "Meuble moyen (lit enfant/adulte, commode, bureau simple, canapé...)"}, "Meuble moyen", "0" %></li>
+          <li><%= d.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
+        <% end %>
+
+        <%= f.fields_for :service do |e| %>
         <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Montage de meubles" %>
-          <li><%= f.check_box :name, {label: "Meuble complexe (lit superposé, grande commode, rayonnage, étagère, bibliothèque...)"}, "Meuble complexe", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= e.hidden_field :category, :value => "Montage de meubles" %>
+          <li><%= e.check_box :name, {label: "Meuble complexe (lit superposé, grande commode, rayonnage, étagère, bibliothèque...)"}, "Meuble complexe", "0" %></li>
+          <li><%= e.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
+        <% end %>
 
-        <h5>Fixation murale</h5>
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Fixation murale" %>
-          <li><%= f.check_box :name, {label: "Simple (tableau, cadre, porte-manteau, crochet, étagère simple, panneau, tablette...)"}, "Simple", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Fixation murale" %>
-          <li><%= f.check_box :name, {label: "Complexe (miroir, étagère multi-panneaux, meibles à fixer...)"}, "Complexe", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Fixation murale" %>
-          <li><%= f.check_box :name, {label: "Rideaux + tringles ou stores avec perçage"}, "Rideaux ou stores", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-
-        <h5>Joints</h5>
-        <p>Nouveaux joints fournis mais sans mastic</p>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Joints" %>
-          <li><%= f.check_box :name, {label: "Lavabo, évier ou vasque"}, "Lavabo, évier ou vasque", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Joints" %>
-          <li><%= f.check_box :name, {label: "Douche ou baignoire"}, "Douche ou baignoire", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <h5>Pose d'éléments de salle de bain</h5>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Pose d'éléments de salle de bain" %>
-          <li><%= f.check_box :name, {label: "Porte-serviette"}, "Porte-serviette", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Pose d'éléments de salle de bain" %>
-          <li><%= f.check_box :name, {label: "Rideau de douche"}, "Rideau de douche", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Pose d'éléments de salle de bain" %>
-          <li><%= f.check_box :name, {label: "Pare-douche"}, "Pare-douche", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <h5>Electricité</h5>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Electricité" %>
-          <li><%= f.check_box :name, {label: "Ajout d'une prise"}, "Ajout d'une prise", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Electricité" %>
-          <li><%= f.check_box :name, {label: "Installation luminaire"}, "Installation luminaire", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <h5><%= f.label :category, "Plomberie" %></h5>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Plomberie" %>
-          <li><%= f.check_box :name, {label: "Flexible, pommeau"}, "Flexible, pommeau", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Plomberie" %>
-          <li><%= f.check_box :name, {label: "Joint, fuite robinet"}, "Joint, fuite robinet", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Plomberie" %>
-          <li><%= f.check_box :name, {label: "Mécanisme chasse-d'eau"}, "Mécanisme chasse-d'eau", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-
-        <div class="list-inline">
-          <%= f.hidden_field :category, :value => "Plomberie" %>
-          <li><%= f.check_box :name, {label: "Changement de robinet"}, "Changement de robinet", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
-          <li>€</li>
-        </div>
-        <br />
-        <p>Vous pouvez à tout moment revenir dans votre espace pour gérer vos travaux (ajout ou suppresion d'une prestation) et vos prix.</p>
-        <br />
 
         <%= f.submit "OK", class: "brand-btn" %>
 
