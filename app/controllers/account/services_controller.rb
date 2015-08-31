@@ -1,11 +1,13 @@
 module Account
   class ServicesController < ApplicationController
-    before_action :set_bricooler, only: [:show, :new, :create, :edit, :update, :destroy]
+    before_action :set_bricooler, only: [:show, :index, :new, :create, :edit, :update, :destroy]
     before_action :set_service, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!
     skip_after_action :verify_authorized
+    respond_to :js
 
     def index
-      @services = current_user.services
+      @services = @bricooler.services
     end
 
     def new
@@ -13,7 +15,8 @@ module Account
     end
 
     def create
-      @service = current_user.profileable.services.new(service_params)
+      @service = @bricooler.services.new(service_params)
+      raise
       if @service.save
         redirect_to root_path, notice: 'Le service a bien été crée.'
       else
