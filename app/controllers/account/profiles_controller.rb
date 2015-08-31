@@ -32,8 +32,17 @@ module Account
   private
 
     def set_bricooler
+<<<<<<< HEAD
+      @bricooler = Bricooler.find(params[:id])
+    end
+
+    # def set_user
+    #  @user = Bricooler.find(params[:id]).user
+    # end
+=======
       @bricooler = current_user.profileable
     end
+>>>>>>> master
 
     def bricooler_params
       params.require(:bricooler).permit(:first_name, :last_name, :phone, :bio, :address, :city, :zipcode, user_attributes: [ :id, :email, :password, :password_confirmation ])
