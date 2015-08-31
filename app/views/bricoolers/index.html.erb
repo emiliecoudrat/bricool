@@ -8,9 +8,13 @@
   <% policy_scope(@bricoolers).each do |bricooler| %>
       <div class="row well">
         <div class="col-sm-3">
-          <%= bricooler.first_name %>
-          <%= bricooler.last_name %>
-          <%= bricooler.bio %>
+          <div>Prénom : <strong><%= bricooler.first_name %></strong></div>
+          <br>
+          <div>Sa description : </strong> <%= bricooler.bio %><strong></div>
+          <br>
+          <div class="col-sm-2">
+            <%= image_tag "https://s3.amazonaws.com/uifaces/faces/twitter/guiiipontes/73.jpg" %>
+          </div>
         </div>
       </div>
   <% end %>
