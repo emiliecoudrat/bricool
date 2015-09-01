@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: :index
-  after_action :verify_authorized, except: :index, unless: :devise_controller?
+  before_action :set_service, except: :index
   skip_before_action :authenticate_user!
+  after_action :verify_policy_scoped, only: :index
 
   def index
     @services = policy_scope(Service)

@@ -1,8 +1,8 @@
 jQuery ->
-  $(".button_submit").live "click", (e) ->
+  $(".button_submit").on "click", (e) ->
     e.preventDefault()
-    $("#decteur-form").trigger "submit"
-    $("#bricolage-form").trigger "submit"
-    $("#montage-simple-form").trigger "submit"
-    $("#montage-moyen-form").trigger "submit"
-    $("#montage-complexe-form").trigger "submit"
+    $("#detecteur-form").submit()
+    $("#bricolage-form").submit()
+    $("#montage-simple-form").submit()
+    $("#montage-moyen-form").submit()
+    $("#montage-complexe-form").submit()

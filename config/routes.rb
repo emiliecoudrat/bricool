@@ -13,7 +13,6 @@ root to: "home#index"
 
   resources :bricoolers, only: [:index, :show] do
     resources :ratings, only: [:index, :show]
-    # resources :services, only: [:index]
     resources :availabilities, only: [:index]
   end
 
