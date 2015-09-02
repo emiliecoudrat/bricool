@@ -17,70 +17,63 @@
 
       <h4>Mes travaux</h4>
 
-      <%= bootstrap_form_for [:account, @service] do |f| %>
+      <%= bootstrap_form_for(@bricooler, url: account_create_services_from_profile_path(@bricooler)) do |f| %>
 
-        <h5>Pose de détecteur</h5>
+      <h5>Pose de détecteur</h5>
+      <%= f.fields_for @bricooler.services.build do |a| %>
           <div class="list-inline" id="detecteur-form">
-            <%= f.hidden_field :category, :value => "Pose d'un détecteur de fumée" %>
-            <li><%= f.check_box :name, {label: "Pose d'un déctecteur de fumée (matériel non fourni)"}, "Pose de détecteur de fumée", "0" %></li>
+            <%= a.hidden_field :category, :value => "Pose d'un détecteur de fumée" %>
+            <li><%= a.check_box :name, {label: "Pose d'un déctecteur de fumée (matériel non fourni)"}, "Pose de détecteur de fumée", "0" %></li>
             <li>- Votre prix:</li>
-            <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+            <li><%= a.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
             <li>€</li>
           </div>
-
       <% end %>
 
-        <h5>Bricolage à l'heure</h5>
+      <h5>Bricolage à l'heure</h5>
 
-      <%= bootstrap_form_for [:account, @service] do |f| %>
-
+      <%= f.fields_for @bricooler.services.build  do |b| %>
           <div class="list-inline" id="bricolage-form">
-            <%= f.hidden_field :category, :value => "Bricolage à l'heure" %>
-            <li><%= f.check_box :name, {label: "Bricolage à l'heure"}, "Bricolage à l'heure", "0" %></li>
-            <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+            <%= b.hidden_field :category, :value => "Bricolage à l'heure" %>
+            <li><%= b.check_box :name, {label: "Bricolage à l'heure"}, "Bricolage à l'heure", "0" %></li>
+            <li><%= b.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
             <li>€</li>
             <em><p>Outils fournis par le bricooleur</p></em>
           </div>
-
       <% end %>
 
-        <h5>Montage de meubles</h5>
+      <h5>Montage de meubles</h5>
 
-      <%= bootstrap_form_for [:account, @service] do |f| %>
-
+      <%= f.fields_for @bricooler.services.build  do |c| %>
         <div class="list-inline" id="montage-simple-form">
-          <%= f.hidden_field :category, :value => "Montage de meubles" %>
-          <li><%= f.check_box :name, {label: "Meuble simple (tabouret, chaise, lit bébé...)"}, "Meuble simple", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= c.hidden_field :category, :value => "Montage de meubles" %>
+          <li><%= c.check_box :name, {label: "Meuble simple (tabouret, chaise, lit bébé...)"}, "Meuble simple", "0" %></li>
+          <li><%= c.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
-
       <% end %>
 
-      <%= bootstrap_form_for [:account, @service] do |f| %>
-
+      <%= f.fields_for @bricooler.services.build  do |d| %>
         <div class="list-inline" id="montage-moyen-form">
-          <%= f.hidden_field :category, :value => "Montage de meubles" %>
-          <li><%= f.check_box :name, {label: "Meuble moyen (lit enfant/adulte, commode, bureau simple, canapé...)"}, "Meuble moyen", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= d.hidden_field :category, :value => "Montage de meubles" %>
+          <li><%= d.check_box :name, {label: "Meuble moyen (lit enfant/adulte, commode, bureau simple, canapé...)"}, "Meuble moyen", "0" %></li>
+          <li><%= d.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
-
       <% end %>
 
-      <%= bootstrap_form_for [:account, @service] do |f| %>
-
+      <%= f.fields_for @bricooler.services.build  do |e| %>
         <div class="list-inline" id="montage-complexe-form">
-          <%= f.hidden_field :category, :value => "Montage de meubles" %>
-          <li><%= f.check_box :name, {label: "Meuble complexe (lit superposé, grande commode, rayonnage, étagère, bibliothèque...)"}, "Meuble complexe", "0" %></li>
-          <li><%= f.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
+          <%= e.hidden_field :category, :value => "Montage de meubles" %>
+          <li><%= e.check_box :name, {label: "Meuble complexe (lit superposé, grande commode, rayonnage, étagère, bibliothèque...)"}, "Meuble complexe", "0" %></li>
+          <li><%= e.number_field :price, hide_label: true, in: 0..200, step: 5 %></li>
           <li>€</li>
         </div>
-
       <% end %>
 
-      <%= link_to "Je valide", account_services_path, :class => 'brand-btn button_submit' %>
+    <%= f.submit "OK", class: "brand-btn" %>
 
+    <% end %>
     <br />
 
     </div>
