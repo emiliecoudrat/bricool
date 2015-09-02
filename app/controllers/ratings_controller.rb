@@ -3,6 +3,7 @@ class RatingsController < ApplicationController
   skip_after_action :verify_authorized
   before_action :set_customer, only: [:new, :create]
   before_action :set_bricooler, only: [:index, :show]
+  # before_action :set_service
   # before_action :set_rating
 
 
@@ -37,6 +38,10 @@ class RatingsController < ApplicationController
   def set_bricooler
     @bricooler = Bricooler.find(params[:bricooler_id])
   end
+
+  # def set_service
+  #   @service = Service.find(params[:id])
+  # end
 
   def rating_params
     params.require(:rating).permit(:average_mark, :comment, :bricooler_id, :customer_id)
