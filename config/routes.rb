@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
 root to: "home#index"
+get 'home/about'
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     resources :estimates, only: [:new, :create]
