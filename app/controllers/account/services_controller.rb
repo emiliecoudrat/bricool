@@ -1,19 +1,22 @@
 module Account
   class ServicesController < ApplicationController
-    before_action :set_bricooler, only: [:show, :new, :create, :edit, :update, :destroy]
+    before_action :set_bricooler
     before_action :set_service, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!
     skip_after_action :verify_authorized
+    after_action :verify_policy_scoped, only: :index
+    respond_to :js
 
     def index
-      @services = current_user.services
+      # @services = @bricooler.services.all
+      @services = policy_scope(Service)
     end
 
     def new
-      @service = Service.new
     end
 
     def create
-      @service = current_user.profileable.services.new(service_params)
+      @service = @bricooler.services.new(service_params)
       if @service.save
         redirect_to root_path, notice: 'Le service a bien été crée.'
       else
@@ -34,7 +37,7 @@ module Account
 
     def destroy
       @service.destroy
-      redirect_to services_url, notice: 'Le service a bien été effacé.'
+      redirect_to account_services_path, notice: 'Le service a bien été effacé.'
     end
 
     private
@@ -48,8 +51,7 @@ module Account
     end
 
     def service_params
-      p params
-      params.require(:service).permit(:name, :category, :price)
+      params.require(:service).permit(:name, :category, :price, :bricooler_id)
     end
 
   end

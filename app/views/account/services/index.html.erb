@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <br />
+      <h4>Mes travaux</h4>
+      <br />
+
+      <% @services.each do |s| %>
+        <div class="mes-travaux list-inline">
+          <h5><%= s.category %></h5>
+          <li><p><%= s.name %> pour <%= s.price %> €</p></li>
+          <li><%= link_to "Modifier", edit_account_service_path(s) %></li>
+          <li><%= link_to "Supprimer", account_service_path(s), method: :delete, data: {confirm: "Supprimer cette prestation ?"} %></li>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ class Bricooler < ActiveRecord::Base
   has_many :services
   has_many :bookings, through: :services
 
+
   #validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   #validates :first_name, :last_name, :phone, :address, :zipcode, :city, :bio
 

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
+
   get 'home/index'
 
-root to: "home#index"
-get 'home/about'
+  root to: "home#index"
+  get 'home/about'
+
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     resources :estimates, only: [:new, :create]
@@ -14,7 +16,6 @@ get 'home/about'
 
   resources :bricoolers, only: [:index, :show] do
     resources :ratings, only: [:index, :show]
-    # resources :services, only: [:index]
     resources :availabilities, only: [:index]
   end
 
@@ -22,6 +23,8 @@ get 'home/about'
 
   namespace :account do
     resource :profile, only: [:show, :edit, :update, :destroy], as: "bricooler"
+    get "profiles/create_services"
+    post "profiles/create_services"
     resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :bookings, only: [:index]
     resources :availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
