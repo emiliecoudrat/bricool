@@ -1,7 +1,6 @@
 module Account
   class ServicesController < ApplicationController
     before_action :set_bricooler
-    # before_action :set_profile
     before_action :set_service, only: [:edit, :update, :destroy]
     before_action :authenticate_user!
     skip_after_action :verify_authorized
@@ -50,10 +49,6 @@ module Account
     def set_bricooler
       @bricooler = current_user.profileable
     end
-
-    # def set_profile
-    #   @profile = current_user.profileable
-    # end
 
     def service_params
       params.require(:service).permit(:name, :category, :price, :bricooler_id)

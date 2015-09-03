@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
+
   get 'home/index'
 
-root to: "home#index"
-#post "profiles/:id/create_services_from_profile" => 'profiles#create_services_from_profile', as: :create_services_from_profile
+  root to: "home#index"
 
   resources :customers, only: [:show, :edit, :update, :destroy] do
     resources :estimates, only: [:new, :create]
@@ -21,7 +21,8 @@ root to: "home#index"
 
   namespace :account do
     resource :profile, only: [:show, :edit, :update, :destroy], as: "bricooler"
-    patch "profiles/:id/create_services_from_profile" => 'profiles#create_services_from_profile', as: :create_services_from_profile
+    get "profiles/create_services"
+    post "profiles/create_services"
     resources :services, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :bookings, only: [:index]
     resources :availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
